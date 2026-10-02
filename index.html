@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>هایپر یاسین | فروشگاه آنلاین یزد</title>
+
+<style>
+*{box-sizing:border-box}
+body{
+margin:0;
+font-family:Tahoma,Arial,sans-serif;
+background:#f5f7f8;
+color:#222;
+}
+header{
+background:linear-gradient(135deg,#087f5b,#12b886);
+color:white;
+padding:25px 15px;
+text-align:center;
+}
+header h1{margin:0;font-size:30px}
+header p{margin:8px 0 0;font-size:16px}
+
+.container{
+max-width:1000px;
+margin:auto;
+padding:15px;
+}
+
+.hero{
+background:white;
+border-radius:18px;
+padding:25px;
+margin-top:15px;
+text-align:center;
+box-shadow:0 3px 15px #0001;
+}
+.hero h2{color:#087f5b;margin-top:0}
+
+.categories{
+display:flex;
+gap:10px;
+overflow-x:auto;
+padding:15px 0;
+}
+.categories button{
+border:0;
+background:white;
+padding:12px 18px;
+border-radius:25px;
+white-space:nowrap;
+cursor:pointer;
+box-shadow:0 2px 8px #0001;
+}
+
+.products{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:15px;
+}
+
+.product{
+background:white;
+border-radius:16px;
+padding:18px;
+box-shadow:0 3px 12px #0001;
+text-align:center;
+}
+.product .icon{font-size:50px}
+.product h3{margin:10px 0}
+.price{
+font-weight:bold;
+color:#087f5b;
+font-size:18px;
+margin:10px;
+}
+.product button{
+background:#087f5b;
+color:white;
+border:0;
+padding:11px 20px;
+border-radius:10px;
+cursor:pointer;
+font-size:15px;
+}
+
+.cart{
+background:white;
+margin-top:20px;
+padding:20px;
+border-radius:18px;
+box-shadow:0 3px 15px #0001;
+}
+.cart h2{margin-top:0;color:#087f5b}
+#cartItems div{
+padding:8px;
+border-bottom:1px solid #eee;
+}
+.order{
+width:100%;
+background:#25D366;
+color:white;
+border:0;
+padding:15px;
+border-radius:12px;
+font-size:18px;
+margin-top:15px;
+cursor:pointer;
+}
+
+footer{
+margin-top:30px;
+background:#222;
+color:white;
+text-align:center;
+padding:25px 10px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<h1>هایپر یاسین</h1>
+<p>سوپر مارکت آنلاین در یزد | ارسال سریع سفارش</p>
+</header>
+
+<div class="container">
+
+<section class="hero">
+<h2>🛒 خرید آسان، سریع و مطمئن</h2>
+<p>محصولات مورد نیازت را انتخاب کن و سفارش خود را ثبت کن.</p>
+</section>
+
+<div class="categories">
+<button onclick="showCategory('همه')">همه</button>
+<button onclick="showCategory('نوشیدنی')">🥤 نوشیدنی</button>
+<button onclick="showCategory('تنقلات')">🍫 تنقلات</button>
+<button onclick="showCategory('صبحانه')">🍯 صبحانه</button>
+<button onclick="showCategory('کنسرو')">🥫 کنسرو</button>
+<button onclick="showCategory('شوینده')">🧴 شوینده و بهداشتی</button>
+</div>
+
+<div class="products" id="products">
+
+<div class="product" data-category="نوشیدنی">
+<div class="icon">🥤</div>
+<h3>نوشابه</h3>
+<div class="price">قیمت روز</div>
+<button onclick="addToCart('نوشابه')">افزودن به سبد</button>
+</div>
+
+<div class="product" data-category="تنقلات">
+<div class="icon">🍫</div>
+<h3>شکلات</h3>
+<div class="price">قیمت روز</div>
+<button onclick="addToCart('شکلات')">افزودن به سبد</button>
+</div>
+
+<div class="product" data-category="تنقلات">
+<div class="icon">🍟</div>
+<h3>چیپس</h3>
+<div class="price">قیمت روز</div>
+<button onclick="addToCart('چیپس')">افزودن به سبد</button>
+</div>
+
+<div class="product" data-category="صبحانه">
+<div class="icon">🍯</div>
+<h3>عسل</h3>
+<div class="price">قیمت روز</div>
+<button onclick="addToCart('عسل')">افزودن به سبد</button>
+</div>
+
+<div class="product" data-category="کنسرو">
+<div class="icon">🥫</div>
+<h3>کنسرو</h3>
+<div class="price">قیمت روز</div>
+<button onclick="addToCart('کنسرو')">افزودن به سبد</button>
+</div>
+
+<div class="product" data-category="شوینده">
+<div class="icon">🧴</div>
+<h3>شوینده و بهداشتی</h3>
+<div class="price">قیمت روز</div>
+<button onclick="addToCart('شوینده و بهداشتی')">افزودن به سبد</button>
+</div>
+
+</div>
+
+<section class="cart">
+<h2>🛒 سبد خرید</h2>
+<div id="cartItems">سبد خرید خالی است.</div>
+<button class="order" onclick="sendOrder()">📱 ثبت سفارش در واتساپ</button>
+</section>
+
+</div>
+
+<footer>
+<strong>هایپر یاسین</strong>
+<p>یزد | ارسال سریع سفارش</p>
+<p>© تمامی حقوق محفوظ است</p>
+</footer>
+
+<script>
+let cart=[];
+
+function addToCart(name){
+cart.push(name);
+renderCart();
+}
+
+function renderCart(){
+let box=document.getElementById("cartItems");
+
+if(cart.length===0){
+box.innerHTML="سبد خرید خالی است.";
+return;
+}
+
+box.innerHTML=cart.map((item,index)=>
+`<div>${index+1}. ${item}</div>`
+).join("");
+}
+
+function showCategory(category){
+let products=document.querySelectorAll(".product");
+
+products.forEach(product=>{
+if(category==="همه" || product.dataset.category===category){
+product.style.display="block";
+}else{
+product.style.display="none";
+}
+});
+}
+
+function sendOrder(){
+
+if(cart.length===0){
+alert("لطفاً ابتدا محصولی به سبد خرید اضافه کنید.");
+return;
+}
+
+let text="سلام، از هایپر یاسین سفارش دارم:%0A%0A";
+
+cart.forEach((item,index)=>{
+text+=(index+1)+". "+item+"%0A";
+});
+
+text+="%0Aلطفاً قیمت و موجودی را اعلام کنید.";
+
+let phone="989XXXXXXXXX";
+
+window.open("https://wa.me/"+phone+"?text="+text,"_blank");
+}
+</script>
+
+</body>
+</html>
